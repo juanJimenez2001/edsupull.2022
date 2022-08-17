@@ -1,0 +1,32 @@
+Memoria Practica individual EdSuPull.
+
+Autor: Juan Jiménez Pérez 
+
+Desarrollo de la practica:
+
+1. Inicio del cliente
+
+Para la implementación de esta primera parte me base en el código de ejemplo srv_rev_thr.c, para realizar la conexión entre cliente y servidor usando sockets. Además, implemente el método clients para poder probarlo. 
+
+2. Lectura de temas
+
+La lectura de los temas la realizo abriendo primero el archivo y después usando un fscanf con el archivo y "%ms", que saque del archivo test.c. Además, también realice la implementación del método topics. 
+
+3. Subscripción y baja de subscripción
+
+En cuanto a la parte de la suscripción la realice junto a la baja porque eran muy similares y así podía probarlas a la vez. En la parte del cliente hacia en ambos casos lo mismo, mandaba el uuid y el tema y ya en la parte del broker comprobaba que tanto el tema como el uuid existían, y además en el caso de baja comprobaba que el usuario estaba subscrito al tema. Para esta parte también implemente subscriptors para probarlo. 
+
+4. Publicación
+
+En la parte de publicación, mandaba el uuid, el tema, el evento y su tamaño, para despues en el broker crear un evento con dichas características y meterlo en la cola de los subscriptores de dicho tema. Además, añadí un contador en evento para saber después cuando podía libelarlo. También, para esta parte implemente events.   
+
+5. Operación get
+
+Para el get, desde el cliente solo le mandaba el uuid, para después desde el broker extraer el primer evento de la cola de eventos del usuario. Una vez tenía dicho evento se lo mandaba junto al tamaño del mismo y el tema al que pertenecía al cliente, y asi poder asignarlo a los punteros dados.
+
+7. Fin del cliente
+
+Por último, en el fin del cliente le mandaba el uuid al broker para en el broker vaciar la cola de eventos decrementando el contador del evento, borrar la lista de temas subscritos y borrar la entrada del cliente del mapa de uuids. 
+
+Opiniones:
+En general, ha sido una práctica compleja, sobre todo al principio a la hora de entender el funcionamiento y como realizar la conexión entre el cliente y servidor, pero después de entender esa parte con ayuda del código de apoyo, no era tan difícil.
